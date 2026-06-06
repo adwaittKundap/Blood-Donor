@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Blood Donor Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>LifeFlow</span>
+            </a>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="dashboard.html" class="nav-link">Find Donors</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="nav-link btn-nav">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Donate Blood, <span class="highlight">Save Lives</span></h1>
+            <p>Join our community of heroes. Your single donation can save up to 3 lives.</p>
+            <div class="hero-buttons">
+                <a href="register.html" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Become a Donor
+                </a>
+                <a href="dashboard.html" class="btn btn-secondary">
+                    <i class="fas fa-search"></i> Find Donors
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="totalDonors">0</span>
+                    <span class="stat-label">Registered Donors</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="liveDonors">0</span>
+                    <span class="stat-label">Available Now</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Blood Groups</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="blood-drop">
+                <i class="fas fa-tint"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose LifeFlow?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3>Easy Search</h3>
+                    <p>Find compatible donors in your area with our advanced search and filter system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Verified Donors</h3>
+                    <p>All donors are verified to ensure safe and reliable blood donation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Real-time Status</h3>
+                    <p>Track donor availability in real-time with live status updates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access the platform anywhere, anytime on any device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blood Group Info -->
+    <section class="blood-info">
+        <div class="container">
+            <h2 class="section-title">Blood Group Compatibility</h2>
+            <div class="blood-groups">
+                <div class="blood-card">
+                    <span class="blood-type">A+</span>
+                    <p>Can donate to: A+, AB+</p>
+                </div>
+                <div class="blood-card">
+                    <span class="blood-type">A-</span>
+                    <p>Can donate to: A+, A-, AB+, AB-</p>
+                </div>
+                <div class="blood-card">
+                    <span class="blood-type">B+</span>
+                    <p>Can donate to: B+, AB+</p>
+                </div>
+                <div class="blood-card">
+                    <span class="blood-type">B-</span>
+                    <p>Can donate to: B+, B-, AB+, AB-</p>
+                </div>
+                <div class="blood-card">
+                    <span class="blood-type">AB+</span>
+                    <p>Can donate to: AB+ only</p>
+                </div>
+                <div class="blood-card">
+                    <span class="blood-type">AB-</span>
+                    <p>Can donate to: AB+, AB-</p>
+                </div>
+                <div class="blood-card universal">
+                    <span class="blood-type">O+</span>
+                    <p>Can donate to: A+, B+, AB+, O+</p>
+                </div>
+                <div class="blood-card universal">
+                    <span class="blood-type">O-</span>
+                    <p>Universal Donor - All types</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Make a Difference?</h2>
+            <p>Register today and become part of our life-saving community.</p>
+            <a href="register.html" class="btn btn-primary btn-large">
+                <i class="fas fa-heart"></i> Register Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-heartbeat"></i> LifeFlow</h3>
+                    <p>Connecting donors with those in need since 2024.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Find Donors</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> support@lifeflow.com</p>
+                    <p><i class="fas fa-phone"></i>(All India Blood Helpline) +91 079-6677-2377</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LifeFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Mobile nav toggle
+        document.getElementById('navToggle').addEventListener('click', () => {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Update stats
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/api/users');
+                const result = await response.json();
+                if (result.success) {
+                    const users = result.data.filter(u => u.role !== 'admin');
+                    document.getElementById('totalDonors').textContent = users.length;
+                    document.getElementById('liveDonors').textContent = users.filter(u => u.status === 'live').length;
+                }
+            } catch (error) {
+                console.error("Failed to fetch donor stats", error);
+            }
+        });
+    </script>
+</body>
+
+</html>

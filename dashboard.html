@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LifeFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>LifeFlow</span>
+            </a>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="dashboard.html" class="nav-link active">Find Donors</a></li>
+                <li id="adminLink" style="display: none;"><a href="admin.html" class="nav-link">Admin Panel</a></li>
+                <li id="authLinks">
+                    <a href="register.html" class="nav-link">Register</a>
+                </li>
+                <li id="userMenu" style="display: none;">
+                    <div class="user-dropdown">
+                        <button class="user-btn" id="userBtn">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="userName">User</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#" id="profileLink"><i class="fas fa-user"></i> My Profile</a>
+                            <a href="#" id="statusToggle"><i class="fas fa-toggle-on"></i> Toggle Status</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <h1><i class="fas fa-search"></i> Find Blood Donors</h1>
+            <p>Search for compatible donors in your area</p>
+        </div>
+    </header>
+
+    <!-- Search & Filter Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-card">
+                <div class="search-row">
+                    <div class="search-group">
+                        <label><i class="fas fa-tint"></i> Blood Group</label>
+                        <select id="bloodGroupFilter">
+                            <option value="">All Blood Groups</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+
+                    <div class="search-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" id="locationFilter" placeholder="Enter city or area">
+                    </div>
+
+                    <div class="search-group">
+                        <label><i class="fas fa-filter"></i> Status</label>
+                        <select id="statusFilter">
+                            <option value="live">Available Donors Only</option>
+                            <option value="all">All Donors</option>
+                            <option value="donated">Recently Donated</option>
+                            <option value="not-willing">Not Available</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+
+                <div class="quick-filters">
+                    <span>Quick filters:</span>
+                    <button class="chip" data-blood="O-">O- (Universal)</button>
+                    <button class="chip" data-blood="O+">O+</button>
+                    <button class="chip" data-blood="A+">A+</button>
+                    <button class="chip" data-blood="B+">B+</button>
+                    <button class="chip" data-blood="AB+">AB+</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <div class="results-header">
+                <h2 id="resultsTitle">Available Donors</h2>
+                <div class="results-info">
+                    <span id="resultsCount">0 donors found</span>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" title="Grid View">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-btn" data-view="list" title="List View">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donors Grid -->
+            <div class="donors-grid" id="donorsGrid">
+                <!-- Donor cards will be dynamically inserted here -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No donors available</h3>
+                <p>No donors found for the selected criteria. Try adjusting your filters.</p>
+                <button class="btn btn-secondary" onclick="clearFilters()">
+                    <i class="fas fa-redo"></i> Clear Filters
+                </button>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Searching for donors...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user"></i> My Profile</h2>
+                <button class="close-btn" onclick="closeModal('profileModal')">&times;</button>
+            </div>
+            <div class="modal-body" id="profileContent">
+                <!-- Profile content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Donor Detail Modal -->
+    <div class="modal" id="donorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user"></i> Donor Details</h2>
+                <button class="close-btn" onclick="closeModal('donorModal')">&times;</button>
+            </div>
+            <div class="modal-body" id="donorContent">
+                <!-- Donor details will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="toast-icon"></i>
+        <span class="toast-message"></span>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
