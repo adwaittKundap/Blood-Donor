@@ -507,6 +507,7 @@ function showProfile() {
     openModal('profileModal');
 }
 
+// Allows the logged-in user to change their status (Available,Recently donated,not available)
 async function toggleUserStatus() {
     const user = getCurrentUser();
     if (!user) return;

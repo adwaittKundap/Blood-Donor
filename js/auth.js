@@ -111,7 +111,7 @@ async function registerDonor(donorData) {
     }
 }
 
-// Update donor (async)
+// Update donor (async) Send PUT and DELETE requests
 async function updateDonor(id, updates) {
     try {
         const response = await fetch(`/api/users/${id}`, {
@@ -169,7 +169,7 @@ function togglePassword(fieldId) {
     }
 }
 
-// Show toast notification
+// Show toast notification depending on whether it's a 'success', 'error', or 'warning'.
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
     const icon = toast.querySelector('.toast-icon');
